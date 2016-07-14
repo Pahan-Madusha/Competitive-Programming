@@ -116,7 +116,32 @@ class IO
 	{
 		System.out.println(obj);
 	}
-	
+	/**************************/
+	public void print(long obj)
+	{
+		System.out.print(obj);
+	}
+
+	/***************************/
+	/***********               */
+	public void println(long obj)
+	{
+		System.out.println(obj);
+	}
+
+	/**************************/
+	public void print(double obj)
+	{
+		System.out.print(obj);
+	}
+
+	/***************************/
+	/***********               */
+	public void println(double obj)
+	{
+		System.out.println(obj);
+	}
+
 	/******************/
 	/*****************/
 	public void println(String obj)
