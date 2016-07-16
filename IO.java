@@ -6,13 +6,13 @@ import java.util.*;
 class IO
 {
 	BufferedReader in;
+	OutputStream out;
     public IO()
 	{
 		try 
 		{
 			in = new BufferedReader(new InputStreamReader(System.in));
-			//in = new BufferedReader(new FileReader(taskname + ".in"));
-
+			out = new BufferedOutputStream (System.out);
 		} 
 		catch (Exception e) 
 		{
@@ -21,51 +21,56 @@ class IO
 		}
 	}
 
-	/******************/
-	/**********       */
+	/* Read an Integer */
 	public int iread()
 	{
 		try
 		{
 			return Integer.parseInt(readword());
 		}
-		catch(Exception e)
+		catch(NumberFormatException e)
 		{
+			e.printStackTrace();
+			System.exit(1);
 			return -1;
 		}
 		
 	}
 
 	/********************/
-	/*************      */
+	/* Read a double */
 	public double dread()
 	{
 		try	
 		{
 			return Double.parseDouble(readword());
 		}
-		catch(Exception e)
+		catch(NumberFormatException e)
 		{
+			e.printStackTrace();
+			System.exit(1);
 			return -1;
 		}
 	}
 	      
 	/*******************/
-	/***********       */
+	/* Read a long */
 	public long lread() 
 	{
 		try
 		{
 			return Long.parseLong(readword());
 		}
-		catch(Exception e)
+		catch(NumberFormatException e)
 		{
+			e.printStackTrace();
+			System.exit(1);
 			return -1;
 		}
 	}
 	
 	/************************/
-	/*************         */
+	/* Read a single word */
 	public String readword()
 	{
 		StringBuilder b = new StringBuilder();
@@ -85,12 +90,14 @@ class IO
 		}
 		catch(Exception e)
 		{
+			e.printStackTrace();
+			System.exit(1);
 			return "";
 		}
 	}
 	
 	/************************/
-	/*************         */
+	/* Read an entire line */
 	public String readLine()
 	{
 		try
@@ -99,85 +106,269 @@ class IO
 		}
 		catch(Exception e)
 		{
+			e.printStackTrace();
+			System.exit(1);	
 			return "";
 		}
 	}
 	
+	/************************/
+	/* Read a BigInteger */
+	public BigInteger bread()
+	{
+		return new BigInteger(this.readword());
+	}
+
 	/*************************/
-	/***********             */
-	public void print(int obj)
+	/*        PRINTING       */
+	/*************************/
+	/* Print an integer */
+	public void p(int obj)
 	{
-		System.out.print(obj);
+		try
+		{
+			out.write((obj+"").getBytes());
+			out.flush();
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+			System.exit(1);
+		}
 	}
 
 	/***************************/
-	/***********               */
-	public void println(int obj)
+	/* Print an integer with newline */
+	public void pln(int obj)
 	{
-		System.out.println(obj);
+		try
+		{
+			out.write((obj+"\n").getBytes());
+			out.flush();
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+			System.exit(1);
+		}
 	}
+
 	/**************************/
-	public void print(long obj)
+	/* Print a long */
+	public void p(long obj)
 	{
-		System.out.print(obj);
+		try
+		{
+			out.write((obj+"").getBytes());
+			out.flush();
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+			System.exit(1);
+		}
 	}
 
 	/***************************/
-	/***********               */
-	public void println(long obj)
+	/* Print a long with newline */
+	public void pln(long obj)
 	{
-		System.out.println(obj);
+		try
+		{
+			out.write((obj+"\n").getBytes());
+			out.flush();
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+			System.exit(1);
+		}
 	}
 
 	/**************************/
-	public void print(double obj)
+	/* Print a double */
+	public void p(double obj)
 	{
-		System.out.print(obj);
+		try
+		{
+			out.write((obj+"").getBytes());
+			out.flush();
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+			System.exit(1);
+		}
 	}
 
 	/***************************/
-	/***********               */
-	public void println(double obj)
+	/* Print a double with newline */
+	public void pln(double obj)
 	{
-		System.out.println(obj);
+		try
+		{
+			out.write((obj+"\n").getBytes());
+			out.flush();
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+			System.exit(1);
+		}
+	}
+	
+	/******************/
+	/* Print a string */
+	public void p(String obj)
+	{
+		try
+		{
+			out.write((obj).getBytes());
+			out.flush();
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+			System.exit(1);
+		}
+	}
+	
+	/*****************************/
+	/* Print a string with newline */
+	public void pln(String obj)
+	{
+		try
+		{
+			out.write((obj+"\n").getBytes());
+			out.flush();
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+			System.exit(1);
+		}
 	}
 
-	/******************/
-	/*****************/
-	public void println(String obj)
+	/***************************/
+	/* Print a BigInteger */
+	public void p(BigInteger obj)
 	{
-		System.out.println(obj);
+		try
+		{
+			out.write((obj+"").getBytes());
+			out.flush();
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+			System.exit(1);
+		}
 	}
 	
-	/******************/
-	/*****************/
-	public void print(String obj)
+	/*****************************/
+	/* Print a BigInteger with newline */
+	public void pln(BigInteger obj)
 	{
-		System.out.print(obj);
+		try
+		{
+			out.write((obj+"\n").getBytes());
+			out.flush();
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+			System.exit(1);
+		}
+	}
+
+	/**********************************/
+	/* Print a string array */
+	public void p(String[] obj)
+	{
+		try
+		{
+			for(String str: obj)
+				out.write((str + "  ").getBytes());
+			out.write("\n".getBytes());
+			out.flush();
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+			System.exit(1);
+		}
 	}
 	
-	/******************/
-	/*****************/
-	public void printArray(String[] obj)
+	/*******************************/
+	/* Print an integer array */
+	public void p(int[] obj)
 	{
-		for(String str: obj)
-			System.out.println(str);
+		try
+		{
+			for(int el: obj)
+				out.write((el + "  ").getBytes());
+			out.write("\n".getBytes());
+			out.flush();
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+			System.exit(1);
+		}
+	}
+
+	/********************************/
+	/* Print a double array */
+	public void p(double[] obj)
+	{
+		try
+		{
+			for(double el: obj)
+				out.write((el + "  ").getBytes());
+			out.write("\n".getBytes());
+			out.flush();
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+			System.exit(1);
+		}
 	}
 	
-	/******************/
-	/*****************/
-	public void printArray(int[] obj)
+	/********************************/
+	/* Print a long array */
+	public void p(long[] obj)
 	{
-		for(int str: obj)
-			System.out.println(str);
+		try
+		{
+			for(long el: obj)
+				out.write((el + "  ").getBytes());
+			out.write("\n".getBytes());
+			out.flush();
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+			System.exit(1);
+		}
 	}
-	
-	/******************/
-	/*****************/
-	public void printArray(long[] obj)
+
+	/********************************/
+	/* Print a BigInteger array */
+	public void p(BigInteger[] obj)
 	{
-		for(long str: obj)
-			System.out.println(str);
+		try
+		{
+			for(BigInteger el: obj)
+				out.write((el+" ").getBytes());
+			out.write("\n".getBytes());
+			out.flush();
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+			System.exit(1);
+		}
 	}
 
 }
